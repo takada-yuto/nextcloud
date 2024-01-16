@@ -84,7 +84,7 @@ admin
 
 ### [グループ管理](https://docs.nextcloud.com/server/latest/admin_manual/configuration_user/instruction_set_for_groups.html)
 
-#### グループ新規作成
+#### ■ グループ新規作成
 
 `curl -X POST http://admin:admin@localhost:8000/ocs/v1.php/cloud/groups -d groupid="新規施設1" -H "OCS-APIRequest: true"`
 
@@ -93,7 +93,7 @@ admin
 ※ 途中で施設名を変更されても`groupid`は変更されないみたい
 ※ 別のアカウント管理システムからnextcloud側のグループを作成する場合、`groupid`をアカウント管理システムに保持させる必要あり
 
-#### [グループフォルダの作成](https://github.com/nextcloud/groupfolders?tab=readme-ov-file#apis)
+#### ■ [グループフォルダの作成](https://github.com/nextcloud/groupfolders?tab=readme-ov-file#apis)
 
 `curl -X POST http://admin:admin@localhost:8000/apps/groupfolders/folders -d mountpoint="施設1" -H "OCS-APIRequest: true"`
 
@@ -101,13 +101,13 @@ admin
 
 ※ xml形式のレスポンスにグループフォルダのidがあるためアカウント管理システム側で保存しておく必要がある
 
-#### [グループフォルダへのアクセス権限を付与](https://github.com/nextcloud/groupfolders?tab=readme-ov-file#apis)
+#### ■ [グループフォルダへのアクセス権限を付与](https://github.com/nextcloud/groupfolders?tab=readme-ov-file#apis)
 
 `curl -X POST http://admin:admin@localhost:8000/apps/groupfolders/folders/$folderId/groups -d group="新規施設1" -H "OCS-APIRequest: true"`
 
 `group`: アクセス権限を付与したい施設のID
 
-#### [グループフォルダへのアクセス権限を付与](https://github.com/nextcloud/groupfolders?tab=readme-ov-file#apis)
+#### ■ [グループフォルダへのアクセス権限を付与](https://github.com/nextcloud/groupfolders?tab=readme-ov-file#apis)
 
 `curl -X POST http://admin:admin@localhost:8000/apps/groupfolders/folders/$folderId/quota -d quota="209715200" -H "OCS-APIRequest: true"`
 
@@ -117,7 +117,7 @@ admin
 
 ### [ユーザー管理](https://docs.nextcloud.com/server/latest/admin_manual/configuration_user/index.html)
 
-#### ユーザー新規登録
+#### ■ ユーザー新規登録
 
 `curl -X POST http://admin:admin@localhost:8000/ocs/v1.php/cloud/users -d userid="demo1" -d password="demo1#12345" -d displayName="デモ1" -d email="demo1@stad.kit-rd.com" -d groups[]="新規施設1" -d quota="1B" -d language="ja" -H "OCS-APIRequest: true"`
 
@@ -132,20 +132,20 @@ admin
 
 **ssoまたはsamlで認証した場合、ユーザー情報どうなるか気になる**
 
-#### ユーザーをグループに追加
+#### ■ ユーザーをグループに追加
 
 `curl -X POST http://admin:admin@localhost:8000/ocs/v1.php/cloud/users/{userid}/groups -d groupid="デモ1" -H "OCS-APIRequest: true"`
 
 `-d groupid="デモ1"`：文字列、所属させたいグループのgroupid
 
-#### ユーザーをグループから削除
+#### ■ ユーザーをグループから削除
 
 `curl -X DELETE http://admin:admin@localhost:8000/ocs/v1.php/cloud/users/{userid}/groups -d groupid="デモ1" -H "OCS-APIRequest: true"`
 
 `-d groupid="デモ1"`：文字列、所属させたいグループのgroupid
 
 
-#### ユーザーを無効にする
+#### ■ ユーザーを無効にする
 
 `curl -X PUT http://admin:admin@localhost:8000/ocs/v1.php/cloud/users/{userid}/disable -H "OCS-APIRequest: true"`
 
