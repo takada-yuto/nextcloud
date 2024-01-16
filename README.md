@@ -107,7 +107,7 @@ admin
 
 `group`: アクセス権限を付与したい施設のID
 
-#### ■ [グループフォルダへのアクセス権限を付与](https://github.com/nextcloud/groupfolders?tab=readme-ov-file#apis)
+#### ■ [グループフォルダへの容量制限を付与](https://github.com/nextcloud/groupfolders?tab=readme-ov-file#apis)
 
 `curl -X POST http://admin:admin@localhost:8000/apps/groupfolders/folders/$folderId/quota -d quota="209715200" -H "OCS-APIRequest: true"`
 
